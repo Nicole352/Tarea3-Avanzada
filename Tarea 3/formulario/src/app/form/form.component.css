@@ -1,0 +1,422 @@
+/* Estilos mejorados y alineados para el formulario */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.95);
+  justify-self: center;
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 24px;
+  padding: 50px;
+  box-shadow: 
+    0 25px 50px rgba(0, 0, 0, 0.15),
+    0 1px 3px rgba(0, 0, 0, 0.05);
+  margin-bottom: 20px;
+  width: 100%;
+  max-width: 1000px;
+  animation: slideUp 0.6s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.card-title {
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 50px;
+  color: #2d3748;
+  text-align: center;
+  position: relative;
+}
+
+.card-title::after {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  border-radius: 2px;
+}
+
+/* Contenedor principal del formulario */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+/* Contenedor de las dos secciones */
+.form-sections-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  align-items: start;
+}
+
+/* Crear las secciones virtualmente con CSS */
+.form-group:nth-child(1),
+.form-group:nth-child(2),
+.form-group:nth-child(3) {
+  position: relative;
+}
+
+.form-group:nth-child(4),
+.form-group:nth-child(5),
+.form-group:nth-child(6) {
+  position: relative;
+}
+
+/* Agrupar visualmente los primeros 3 campos */
+.form-group:nth-child(1) {
+  background: rgba(255, 255, 255, 0.8);
+  padding: 30px;
+  border-radius: 20px 20px 0 0;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-bottom: none;
+  box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.05);
+}
+
+.form-group:nth-child(2) {
+  background: rgba(255, 255, 255, 0.8);
+  padding: 30px;
+  border-left: 1px solid rgba(255, 255, 255, 0.3);
+  border-right: 1px solid rgba(255, 255, 255, 0.3);
+  margin-top: -1px;
+}
+
+.form-group:nth-child(3) {
+  background: rgba(255, 255, 255, 0.8);
+  padding: 30px;
+  border-radius: 0 0 20px 20px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-top: none;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  margin-top: -1px;
+}
+
+/* Agrupar visualmente los últimos 3 campos */
+.form-group:nth-child(4) {
+  background: rgba(255, 255, 255, 0.8);
+  padding: 30px;
+  border-radius: 20px 20px 0 0;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-bottom: none;
+  box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.05);
+}
+
+.form-group:nth-child(5) {
+  background: rgba(255, 255, 255, 0.8);
+  padding: 30px;
+  border-left: 1px solid rgba(255, 255, 255, 0.3);
+  border-right: 1px solid rgba(255, 255, 255, 0.3);
+  margin-top: -1px;
+}
+
+.form-group:nth-child(6) {
+  background: rgba(255, 255, 255, 0.8);
+  padding: 30px;
+  border-radius: 0 0 20px 20px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-top: none;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  margin-top: -1px;
+}
+
+/* Reorganizar en grid */
+form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 50px;
+  grid-template-areas: 
+    "personal account"
+    "personal account" 
+    "personal account"
+    "button button";
+}
+
+.form-group:nth-child(1) { grid-area: personal; grid-row: 1; }
+.form-group:nth-child(2) { grid-area: personal; grid-row: 2; }
+.form-group:nth-child(3) { grid-area: personal; grid-row: 3; }
+.form-group:nth-child(4) { grid-area: account; grid-row: 1; }
+.form-group:nth-child(5) { grid-area: account; grid-row: 2; }
+.form-group:nth-child(6) { grid-area: account; grid-row: 3; }
+button { grid-area: button; }
+
+/* Títulos de sección */
+.form-group:nth-child(1)::before {
+  content: '👤 Información Personal';
+  display: block;
+  font-size: 20px;
+  font-weight: 600;
+  color: #4a5568;
+  margin-bottom: 25px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid rgba(102, 126, 234, 0.15);
+  text-align: center;
+}
+
+.form-group:nth-child(4)::before {
+  content: '🔐 Información de Cuenta';
+  display: block;
+  font-size: 20px;
+  font-weight: 600;
+  color: #4a5568;
+  margin-bottom: 25px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid rgba(102, 126, 234, 0.15);
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 0;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group:hover {
+  transform: translateY(-2px);
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: 500;
+  color: #4a5568;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+input {
+  width: 100%;
+  padding: 18px 22px;
+  box-sizing: border-box;
+  border: 2px solid #e2e8f0;
+  border-radius: 14px;
+  font-size: 16px;
+  color: #2d3748;
+  background: rgba(255, 255, 255, 0.95);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: inherit;
+}
+
+input::placeholder {
+  color: #a0aec0;
+  font-style: italic;
+}
+
+input:focus {
+  border-color: #667eea;
+  outline: none;
+  box-shadow: 
+    0 0 0 4px rgba(102, 126, 234, 0.12),
+    0 6px 16px rgba(102, 126, 234, 0.2);
+  background: white;
+  transform: translateY(-1px);
+}
+
+input:valid:not(:placeholder-shown) {
+  border-color: #48bb78;
+  background: rgba(72, 187, 120, 0.03);
+}
+
+input:invalid:not(:placeholder-shown) {
+  border-color: #f56565;
+  background: rgba(245, 101, 101, 0.03);
+  animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-6px); }
+  75% { transform: translateX(6px); }
+}
+
+.error-message {
+  color: #f56565;
+  font-size: 13px;
+  margin-top: 10px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  animation: fadeIn 0.3s ease-in;
+  background: rgba(245, 101, 101, 0.05);
+  padding: 8px 12px;
+  border-radius: 8px;
+  border-left: 3px solid #f56565;
+}
+
+.error-message::before {
+  content: '⚠';
+  font-size: 16px;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+/* El botón */
+button {
+  padding: 20px 50px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 16px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  margin-top: 30px;
+  justify-self: center;
+  min-width: 250px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 10px 25px rgba(102, 126, 234, 0.35);
+  position: relative;
+  overflow: hidden;
+}
+
+button::before {
+  content: '💾';
+  margin-right: 12px;
+  font-size: 20px;
+}
+
+button:hover:not(:disabled) {
+  transform: translateY(-4px);
+  box-shadow: 0 15px 35px rgba(102, 126, 234, 0.45);
+}
+
+button:active:not(:disabled) {
+  transform: translateY(-2px);
+}
+
+button:disabled {
+  background: linear-gradient(135deg, #a0aec0 0%, #cbd5e0 100%);
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: 0 6px 15px rgba(160, 174, 192, 0.25);
+}
+
+button:disabled::before {
+  content: '🔒';
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  body {
+    padding: 15px;
+  }
+  
+  .card {
+    padding: 30px;
+    max-width: 100%;
+  }
+  
+  form {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    grid-template-areas: 
+      "personal"
+      "personal" 
+      "personal"
+      "account"
+      "account"
+      "account"
+      "button";
+  }
+  
+  .form-group:nth-child(1),
+  .form-group:nth-child(2),
+  .form-group:nth-child(3),
+  .form-group:nth-child(4),
+  .form-group:nth-child(5),
+  .form-group:nth-child(6) {
+    padding: 20px;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    margin-top: 0;
+  }
+  
+  .card-title {
+    font-size: 28px;
+  }
+  
+  button {
+    width: 100%;
+    padding: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    padding: 20px;
+    border-radius: 20px;
+  }
+  
+  .form-group:nth-child(1),
+  .form-group:nth-child(2),
+  .form-group:nth-child(3),
+  .form-group:nth-child(4),
+  .form-group:nth-child(5),
+  .form-group:nth-child(6) {
+    padding: 15px;
+    border-radius: 12px;
+  }
+  
+  input {
+    padding: 16px 18px;
+    font-size: 15px;
+  }
+  
+  .card-title {
+    font-size: 24px;
+  }
+  
+  .form-group:nth-child(1)::before,
+  .form-group:nth-child(4)::before {
+    font-size: 18px;
+  }
+}

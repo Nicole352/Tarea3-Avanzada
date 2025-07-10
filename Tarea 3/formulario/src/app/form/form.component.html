@@ -1,0 +1,58 @@
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com;">
+
+<div class="card">
+  <div class="card-body">
+    <h2 class="card-title">Registro de persona</h2>
+    <form [formGroup]="registerForm" (ngSubmit)="saveUserOnBDD()">
+      <div class="form-group">
+        <label for="name">Nombre:</label>
+        <input id="name" formControlName="name" class="form-control">
+        <div class="error-message" *ngIf="registerForm.get('name')?.invalid && registerForm.get('name')?.touched">
+          El nombre es obligatorio y debe contener solo letras.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input id="email" formControlName="email" class="form-control">
+        <div class="error-message" *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched">
+          Debe ser un correo electrónico válido
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="cedula">Cedula:</label>
+        <input id="cedula" formControlName="cedula" class="form-control">
+        <div class="error-message" *ngIf="registerForm.get('cedula')?.invalid && registerForm.get('cedula')?.touched">
+          Se requiere cédula y debe contener solo números
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="age">Edad:</label>
+        <input id="age" formControlName="age" type="number" class="form-control">
+        <div class="error-message" *ngIf="registerForm.get('age')?.invalid && registerForm.get('age')?.touched">
+          La edad debe estar entre 18 y 65 años.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="password">Contraseña:</label>
+        <input id="password" formControlName="password" type="password" class="form-control">
+        <div class="error-message"
+          *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched">
+          Se requiere contraseña (mínimo 8 caracteres)
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="confirmPassword">Confirmar Contraseña</label>
+        <input id="confirmPassword" formControlName="confirmPassword" type="password" class="form-control">
+        <div class="error-message"
+          *ngIf="registerForm.get('confirmPassword')?.invalid && registerForm.get('confirmPassword')?.touched">
+          Confirmar Se requiere contraseña
+        </div>
+        <div class="error-message"
+          *ngIf="registerForm.errors?.['passwordMismatch'] && registerForm.get('confirmPassword')?.touched">
+          Las contraseñas deben coincidir
+        </div>
+      </div>
+      <button type="submit" [disabled]="registerForm.invalid" class="btn btn-primary">Guardar</button>
+    </form>
+  </div>
+</div>
